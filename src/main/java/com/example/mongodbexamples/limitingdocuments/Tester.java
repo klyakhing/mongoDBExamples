@@ -1,6 +1,8 @@
-package com.example.mongodbexamples.dropcollection;
+package com.example.mongodbexamples.limitingdocuments;
 
 import org.bson.Document;
+
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -10,14 +12,16 @@ public class Tester {
     public static void main(String[] args) {
         // Creating a Mongo client
         MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
-
-        // get the database
         MongoDatabase database = mongoClient.getDatabase("test");
 
-        // Retrieving a collection
-        MongoCollection<Document> collection = database.getCollection("sample1Collection");
+        // Get the collection
+        MongoCollection<Document> collection = database.getCollection("sample2Collection");
 
-        collection.drop();
-        System.out.println("Collection dropped.");
+        // Find two documents
+        FindIterable<Document> allDocuments = collection.find().limit(3);
+
+        for (Document document : allDocuments) {
+            System.out.println(document);
+        }
     }
 }
