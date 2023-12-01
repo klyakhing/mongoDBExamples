@@ -13,7 +13,7 @@ import com.mongodb.client.model.Filters;
 public class Tester {
     public static void main(String[] args) {
         // Creating a Mongo client
-        MongoClient mongoClient = MongoClients.create("mongodb+srv://admin:password@cluster0.t7kjst8.mongodb.net/test");
+        MongoClient mongoClient = MongoClients.create("mongodb+srv://admin:pass@cluster0.t7kjst8.mongodb.net/test");
         MongoDatabase database = mongoClient.getDatabase("test");
 
         // Creating Credentials
